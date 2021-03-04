@@ -24,30 +24,16 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { inject } from 'vue';
 
 export default {
 setup() {
-    const { state, addItem, removeItem } = ItemList();
+    const TodoListJS = inject('TodoListJS')
+    const { state, addItem, removeItem } = TodoListJS;
     return { state, addItem, removeItem };
   }
 };
-function ItemList() {
-  let state = reactive({
-    input: "",
-    Items: ["Build Vue3 App"]
-  });
- let addItem = () => {
-    state.Items.push(state.input);
-    state.input = "";
-  };
 
- let removeItem = i => {
-    state.Items.splice(i, 1);
-  };
-  return { state, addItem, removeItem };
-
- }
 
 
 </script>
